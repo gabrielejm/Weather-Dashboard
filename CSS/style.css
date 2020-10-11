@@ -1,0 +1,23 @@
+h1 {
+  text-align: center;
+  color: white;
+  background-color: darkgrey;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+#search-div {
+  float: left;
+}
+
+#daily-div {
+
+}
+
+#five-day-div {
+
+}
+
+.glyphicon {
+  font-size: 50px!important;
+}

@@ -1,23 +1,24 @@
 h1 {
   text-align: center;
   color: white;
-  background-color: darkgrey;
+  background-color: black;
   padding-top: 5px;
   padding-bottom: 10px;
+}
+
+
+#search-card {
+  background: rgb(248,248,248)
+  
+}
+
+.history {
+  margin-top: 10px;
 }
 
 #search-div {
   float: left;
 }
-
-#daily-div {
-
-}
-
-#five-day-div {
-
-}
-
-.glyphicon {
-  font-size: 50px!important;
-}
+/* .hide {
+  display: none;
+} */

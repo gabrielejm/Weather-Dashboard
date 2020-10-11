@@ -9,9 +9,11 @@
   <script src="https://kit.fontawesome.com/bf769799e7.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <h1>Weather Dashboard</h1>
-  <div class="container" id="search-div">
-    <div class="card" style="width: 18rem;">
+<h1>Weather Dashboard</h1>
+<div class="container">
+  <div class="container col-md-4" id="search-div">
+    <div class="row">
+    <div class="card" id="search-card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Search for a City: </h5>
         <div class="input-group">
@@ -21,23 +23,50 @@
               <span><i class="fas fa-search"></i></span>
             </button>
           </span>
+          <div class="card hide history" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"></li>
+              <li class="list-group-item"></li>
+              <li class="list-group-item"></li>
+              <li class="list-group-item"></li>
+              <li class="list-group-item"></li>
+              <li class="list-group-item"></li>
+              <li class="list-group-item"></li>
+              <li class="list-group-item"></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
+    </div>
+  </div>  
+
+  <div class="container hide col-md-8" id="daily-div">
+    <div class="row">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h3 class="card-title">City and Date</h3>
+        <p>Temperature: </p>
+        <p>Humidity: </p>
+        <p>Wind Speed: </p>
+        <p>UV Index:</p>
+      </div>
+    </div>
+    </div>
   </div>
-  <div class="container" id="daily-div">
 
+  <div class="container hide col-md-8" id="five-day-div">
+    <div class="row">
+      <h3>5-Day Forecast: </h3>
+    </div>
   </div>
-  <div class="container" id="five-day-div">
-
-  </div>
 
 
 
 
 
 
-
+</div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

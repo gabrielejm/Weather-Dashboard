@@ -29,10 +29,6 @@ $("#search-btn").click(function () {
 //second api call for 5 day forcast
 //for loop
 
-function temperatureConverter(valNum) {
-  realTemp = parseFloat(valNum);
-  document.getElementById("outputFahrenheit").innerHTML=((valNum-273.15)*1.8)+32;
-}
 
 
 

@@ -10,9 +10,12 @@ $("#search-btn").click(function () {
   }).then(function(response) {
     console.log('response:', response)
     var tempConvert =  Math.round((((response.main.temp) - 273.15)*1.8)+32);
-    
+    var weatherIcon = response.weather[0].icon;
+    var iconURL = "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
+
     $('#daily-div').removeClass("hide");
     $('#city-date').text(response.name + " (" + (moment().format('l') + ")"))
+    $('#city-date').append('<span><img src=' + iconURL + '></span>')
     $('#temp-p').text("Temperature: " + tempConvert + " °F")
     $('#humid-p').text("Humidity: " + response.main.humidity + "%");
     $('#wind-p').text("Wind Speed: " + response.wind.speed + " MPH");

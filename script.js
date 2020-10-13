@@ -11,7 +11,7 @@ $("#search-btn").click(function () {
     console.log('response:', response)
     var tempConvert =  Math.round((((response.main.temp) - 273.15)*1.8)+32);
     
-
+    $('#daily-div').removeClass("hide");
     $('#city-date').text(response.name + " (" + (moment().format('l') + ")"))
     $('#temp-p').text("Temperature: " + tempConvert)
     $('#humid-p').text("Humidity: " + response.main.humidity + "%");

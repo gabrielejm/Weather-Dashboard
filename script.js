@@ -13,9 +13,9 @@ $("#search-btn").click(function () {
     
     $('#daily-div').removeClass("hide");
     $('#city-date').text(response.name + " (" + (moment().format('l') + ")"))
-    $('#temp-p').text("Temperature: " + tempConvert)
+    $('#temp-p').text("Temperature: " + tempConvert + " °F")
     $('#humid-p').text("Humidity: " + response.main.humidity + "%");
-    $('#wind-p').text("Wind Speed: " + response.wind.speed);
+    $('#wind-p').text("Wind Speed: " + response.wind.speed + " MPH");
     $('#UV-p')
     
 

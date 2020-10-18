@@ -6,10 +6,8 @@ h1 {
   padding-bottom: 10px;
 }
 
-
 #search-card {
-  background: rgb(248,248,248)
-  
+  background: rgb(248, 248, 248);
 }
 
 .history {
@@ -23,6 +21,11 @@ h1 {
 .daily-space {
   margin-right: 10px;
   margin-bottom: 10px;
+  width: 25%;
+}
+
+#uvText {
+  color: white;
 }
 /* .hide {
   display: none;

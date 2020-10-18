@@ -4,6 +4,8 @@ var iconURL;
 var lat;
 var long;
 var uvURL;
+var currentDate;
+var fiveDayIcon;
 
 $("#search-btn").click(function () {
   event.preventDefault();
@@ -67,7 +69,24 @@ $("#search-btn").click(function () {
     method: "GET",
   }).then(function (response) {
     console.log("responsefiveday:", response);
-    // for (let i = 0; i < array.length; i++) {}
+    currentDate = moment().format("l");
+    tempConvert = Math.round((response.list[7].main.temp - 273.15) * 1.8 + 32);
+    fiveDayIcon = response.list[7].weather[0].icon;
+    fiveDayIconURL =
+      "https://openweathermap.org/img/wn/" + fiveDayIcon + "@2x.png";
+
+    $("#five-day-div")
+      .find("div")
+      .each(function () {
+        $(".five-day-date").text(moment().add(1, "days").format("DD-MM-YYYY"));
+        $(".five-day-icon").html(
+          "<span><img src=" + fiveDayIconURL + "></span>"
+        );
+        $(".five-day-temp").text("Temp: " + tempConvert + " °F");
+        $(".five-day-humid").text(
+          "Humidity: " + response.list[7].main.humidity + "%"
+        );
+      });
   });
 });
 

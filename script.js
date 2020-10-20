@@ -92,21 +92,16 @@ function getweather(city) {
               <p class="five-day-humid">Humidity: ${response.list[i].main.humidity} %</p>
             </div>
           </div>`;
+
+        $("#five-day-div").removeClass("hide");
         $("#fivedaycards").append(cardWeather);
       }
     }
-
-    // //loop that attaches 5 day forecast data to 5 day forcast cards
-    // $("#five-day-div")
-    //   .find(".card-body")
-    //   .each(function (index, element) {
-    //     console.log("index:", index);
-    //     console.log("element:", element);
-    //   });
   });
   //retreiving history from local storage IF the city thats being search is not in the history list
   var historylist = JSON.parse(localStorage.getItem("historylist")) || [];
   if (historylist.indexOf(city) === -1) {
+    $("#historydiv").removeClass("hide");
     historylist.push(city);
   }
   //saving updated data back to local storage

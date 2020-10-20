@@ -75,21 +75,36 @@ function getweather(city) {
     for (let i = 0; i < response.list.length; i++) {
       if (response.list[i].dt_txt.indexOf("15:00:00") > 0) {
         console.log(response.list[i]);
+        tempConvert = Math.round(
+          (response.list[i].main.temp - 273.15) * 1.8 + 32
+        );
+        var cardWeather = `<div
+            class="text-white bg-primary card col-md-2 daily-space"
+            style="width: 18rem"
+          >
+            <div class="card-body">
+              <h5 class="five-day-date card-title">${response.list[i].dt_txt}</h5>
+              <span class="five-day-icon">Icon here</span>
+              <p class="five-day-temp">${tempConvert}</p>
+              <p class="five-day-humid">${response.list[i].main.humidity}</p>
+            </div>
+          </div>`;
+        $("#fivedaycards").append(cardWeather);
       }
     }
-    currentDate = moment().format("l");
-    tempConvert = Math.round((response.list[7].main.temp - 273.15) * 1.8 + 32);
-    fiveDayIcon = response.list[7].weather[0].icon;
-    fiveDayIconURL =
-      "https://openweathermap.org/img/wn/" + fiveDayIcon + "@2x.png";
+    // currentDate = moment().format("l");
 
-    //loop that attaches 5 day forecast data to 5 day forcast cards
-    $("#five-day-div")
-      .find(".card-body")
-      .each(function (index, element) {
-        console.log("index:", index);
-        console.log("element:", element);
-      });
+    // fiveDayIcon = response.list[7].weather[0].icon;
+    // fiveDayIconURL =
+    //   "https://openweathermap.org/img/wn/" + fiveDayIcon + "@2x.png";
+
+    // //loop that attaches 5 day forecast data to 5 day forcast cards
+    // $("#five-day-div")
+    //   .find(".card-body")
+    //   .each(function (index, element) {
+    //     console.log("index:", index);
+    //     console.log("element:", element);
+    //   });
   });
   //retreiving history from local storage IF the city thats being search is not in the history list
   var historylist = JSON.parse(localStorage.getItem("historylist")) || [];

@@ -8,14 +8,15 @@ var currentDate;
 var fiveDayIcon;
 var history;
 var counter;
-//function created in order to make api call in multiple places
+
+//function created in order to make api calls in multiple places
 function getweather(city) {
   var queryURL =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
     "&appid=a40d7a1a6831874bf11b6952becc82c2";
   var apiKey = "a40d7a1a6831874bf11b6952becc82c2";
-
+  //ajax call for the present day forecast
   $.ajax({
     url: queryURL,
     method: "GET",
@@ -32,14 +33,14 @@ function getweather(city) {
       "&lon=" +
       lon +
       "&appid=a40d7a1a6831874bf11b6952becc82c2";
-
+    //attaching ajax call data to html elements
     $("#daily-div").removeClass("hide");
     $("#city-date").text(response.name + " (" + (moment().format("l") + ")"));
     $("#city-date").append("<span><img src=" + iconURL + "></span>");
     $("#temp-p").text("Temperature: " + tempConvert + " °F");
     $("#humid-p").text("Humidity: " + response.main.humidity + "%");
     $("#wind-p").text("Wind Speed: " + response.wind.speed + " MPH");
-
+    //second ajax call for UV index
     $.ajax({
       url: uvURL,
       method: "GET",
@@ -48,6 +49,7 @@ function getweather(city) {
       $("#UV-p").html(
         "<p>UV Index:<span id='uvText'> " + response.value + "</span></p>"
       );
+      //color coats the UV index based on the value
       if (response.value < 3) {
         $("#uvText").addClass("bg-success");
       } else if (response.value > 2 || response.value < 8) {
@@ -63,12 +65,13 @@ function getweather(city) {
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
     fivedayinput +
     "&appid=a40d7a1a6831874bf11b6952becc82c2";
-
+  //third ajax call for the 5 day forecast
   $.ajax({
     url: fivedayURL,
     method: "GET",
   }).then(function (response) {
     console.log("responsefiveday:", response);
+    //loop that retrieves the 5 day forecast information for 3pm for each day
     for (let i = 0; i < response.list.length; i++) {
       if (response.list[i].dt_txt.indexOf("15:00:00") > 0) {
         console.log(response.list[i]);
@@ -80,24 +83,12 @@ function getweather(city) {
     fiveDayIconURL =
       "https://openweathermap.org/img/wn/" + fiveDayIcon + "@2x.png";
 
+    //loop that attaches 5 day forecast data to 5 day forcast cards
     $("#five-day-div")
       .find(".card-body")
       .each(function (index, element) {
         console.log("index:", index);
         console.log("element:", element);
-
-        // counter = 0;
-        // counter++;
-        // $(".five-day-date").text(
-        //   moment().add(counter, "days").format("MM-DD-YYYY")
-        // );
-        // $(".five-day-icon").html(
-        //   "<span><img src=" + fiveDayIconURL + "></span>"
-        // );
-        // $(".five-day-temp").text("Temp: " + tempConvert + " °F");
-        // $(".five-day-humid").text(
-        //   "Humidity: " + response.list[7].main.humidity + "%"
-        // );
       });
   });
   //retreiving history from local storage IF the city thats being search is not in the history list

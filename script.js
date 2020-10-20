@@ -78,25 +78,23 @@ function getweather(city) {
         tempConvert = Math.round(
           (response.list[i].main.temp - 273.15) * 1.8 + 32
         );
+        fiveDayIcon = response.list[i].weather[0].icon;
+        fiveDayIconURL =
+          "https://openweathermap.org/img/wn/" + fiveDayIcon + "@2x.png";
         var cardWeather = `<div
             class="text-white bg-primary card col-md-2 daily-space"
             style="width: 18rem"
           >
             <div class="card-body">
               <h5 class="five-day-date card-title">${response.list[i].dt_txt}</h5>
-              <span class="five-day-icon">Icon here</span>
-              <p class="five-day-temp">${tempConvert}</p>
-              <p class="five-day-humid">${response.list[i].main.humidity}</p>
+              <span class="five-day-icon"><img src=${fivedayURL}></span>
+              <p class="five-day-temp">Temp: ${tempConvert} °F</p>
+              <p class="five-day-humid">Humidity: ${response.list[i].main.humidity} %</p>
             </div>
           </div>`;
         $("#fivedaycards").append(cardWeather);
       }
     }
-    // currentDate = moment().format("l");
-
-    // fiveDayIcon = response.list[7].weather[0].icon;
-    // fiveDayIconURL =
-    //   "https://openweathermap.org/img/wn/" + fiveDayIcon + "@2x.png";
 
     // //loop that attaches 5 day forecast data to 5 day forcast cards
     // $("#five-day-div")

@@ -8,6 +8,7 @@ var currentDate;
 var fiveDayIcon;
 var history;
 var counter;
+var cityInput;
 
 //function created in order to make api calls in multiple places
 function getweather(city) {
@@ -112,6 +113,7 @@ function getweather(city) {
   historylist.forEach((history) => {
     var item = $("<li>").text(history).addClass("list-group-item");
     item.on("click", function (event) {
+      $("#fivedaycards").empty();
       var city = event.target.innerText;
       getweather(city);
     });
@@ -122,8 +124,9 @@ function getweather(city) {
 }
 
 $("#search-btn").click(function () {
+  $("#fivedaycards").empty();
   event.preventDefault();
-  var cityInput = $("#input").val();
+  cityInput = $("#input").val();
   getweather(cityInput);
 });
 

@@ -87,7 +87,7 @@ function getweather(city) {
           >
             <div class="card-body">
               <h5 class="five-day-date card-title">${response.list[i].dt_txt}</h5>
-              <span class="five-day-icon"><img src=${fivedayURL}></span>
+              <span class="five-day-icon"><img src=${fiveDayIconURL}></span>
               <p class="five-day-temp">Temp: ${tempConvert} °F</p>
               <p class="five-day-humid">Humidity: ${response.list[i].main.humidity} %</p>
             </div>

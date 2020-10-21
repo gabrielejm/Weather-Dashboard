@@ -18,7 +18,7 @@
   </head>
   <body>
     <h1>Weather Dashboard</h1>
-    <div class="container">
+    <div class="container" id="searchhistory">
       <div class="container col-md-4" id="search-div">
         <div class="row">
           <div class="card" id="search-card" style="width: 18rem">
@@ -31,7 +31,7 @@
                     <span><i class="fas fa-search"></i></span>
                   </button>
                 </span>
-                <div id="historydiv" class="card" style="width: 18rem">
+                <div class="overflow-auto" id="historydiv" style="width: 18rem">
                   <ul id="history" class="list-group list-group-flush"></ul>
                 </div>
               </div>
@@ -39,6 +39,7 @@
           </div>
         </div>
       </div>
+    </div>
     <div class="container">
       <div class="container hide" id="daily-div">
         <div class="row">
@@ -58,8 +59,7 @@
         <div class="row">
           <h3>5-Day Forecast:</h3>
         </div>
-        <span id="fivedaycards" class="row">
-        </span>
+        <span id="fivedaycards" class="row"> </span>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

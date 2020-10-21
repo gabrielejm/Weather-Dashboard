@@ -30,3 +30,7 @@ h1 {
 .hide {
   display: none;
 }
+
+#historydiv {
+  max-height: 150px;
+}

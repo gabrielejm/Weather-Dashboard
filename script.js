@@ -81,12 +81,13 @@ function getweather(city) {
         fiveDayIcon = response.list[i].weather[0].icon;
         fiveDayIconURL =
           "https://openweathermap.org/img/wn/" + fiveDayIcon + "@2x.png";
+        var dateFormat = moment(response.list[i].dt_txt).format("l");
         var cardWeather = `<div
             class="text-white bg-primary card col-md-2 daily-space"
             style="width: 18rem"
           >
             <div class="card-body">
-              <h5 class="five-day-date card-title">${response.list[i].dt_txt}</h5>
+              <h5 class="five-day-date card-title">${dateFormat}</h5>
               <span class="five-day-icon"><img src=${fiveDayIconURL}></span>
               <p class="five-day-temp">Temp: ${tempConvert} °F</p>
               <p class="five-day-humid">Humidity: ${response.list[i].main.humidity} %</p>

@@ -22,7 +22,7 @@ function getweather(city) {
     url: queryURL,
     method: "GET",
   }).then(function (response) {
-    console.log("response:", response);
+    // console.log("response:", response);
     tempConvert = Math.round((response.main.temp - 273.15) * 1.8 + 32);
     weatherIcon = response.weather[0].icon;
     iconURL = "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
@@ -71,11 +71,11 @@ function getweather(city) {
     url: fivedayURL,
     method: "GET",
   }).then(function (response) {
-    console.log("responsefiveday:", response);
+    // console.log("responsefiveday:", response);
     //loop that retrieves the 5 day forecast information for 3pm for each day
     for (let i = 0; i < response.list.length; i++) {
       if (response.list[i].dt_txt.indexOf("15:00:00") > 0) {
-        console.log(response.list[i]);
+        // console.log(response.list[i]);
         tempConvert = Math.round(
           (response.list[i].main.temp - 273.15) * 1.8 + 32
         );
@@ -129,6 +129,3 @@ $("#search-btn").click(function () {
   cityInput = $("#input").val();
   getweather(cityInput);
 });
-
-//second api call for 5 day forcast
-//for loop

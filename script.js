@@ -9,6 +9,12 @@ var fiveDayIcon;
 var history;
 var counter;
 var cityInput;
+var localstorage = JSON.parse(localStorage.getItem("historylist"));
+if (localstorage) {
+  console.log("localstorage:", localstorage.length - 1);
+
+  getweather(localstorage[localstorage.length - 1]);
+}
 
 //function created in order to make api calls in multiple places
 function getweather(city) {
@@ -61,7 +67,7 @@ function getweather(city) {
     });
   });
 
-  var fivedayinput = $("#input").val();
+  var fivedayinput = city;
   var fivedayURL =
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
     fivedayinput +
@@ -71,7 +77,7 @@ function getweather(city) {
     url: fivedayURL,
     method: "GET",
   }).then(function (response) {
-    // console.log("responsefiveday:", response);
+    console.log("responsefiveday:", response);
     //loop that retrieves the 5 day forecast information for 3pm for each day
     for (let i = 0; i < response.list.length; i++) {
       if (response.list[i].dt_txt.indexOf("15:00:00") > 0) {
